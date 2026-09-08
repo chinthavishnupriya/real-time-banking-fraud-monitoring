@@ -66,49 +66,9 @@ A controlled throughput test produced **100 transactions in 60.01 seconds**, mea
 
 ## Evidence / Screenshots
 
-### 1. Kafka Topic & Partition Configuration
+The project evidence screenshots are collected in the image below. They cover Kafka topic configuration, consumer processing, fraud detection, throughput testing, Datadog events, Kafka monitoring, dashboard visualization, and monitor configuration.
 
-![Kafka bank-transactions topic](screenshots/01-kafka-bank-transactions.png)
-
-### 2. Fraud Alert Kafka Topic Configuration
-
-![Kafka fraud-alerts topic](screenshots/02-kafka-fraud-alerts.png)
-
-### 3. Two Kafka Consumer Instances & Partition Assignment
-
-![Two Kafka consumers](screenshots/03-two-consumers.png)
-
-### 4. Fraud Detection and Datadog Event Publishing
-
-![Fraud detection and Datadog publishing](screenshots/04-fraud-detection-datadog.png)
-
-### 5. Rapid Transaction Fraud Detection
-
-![Rapid transaction detection](screenshots/05-rapid-transactions.png)
-
-### 6. 100 Transactions/Minute Throughput Test
-
-![Throughput test](screenshots/06-throughput-test.png)
-
-### 7. Datadog Event Explorer: Banking Transaction Events
-
-![Datadog transaction events](screenshots/07-datadog-events.png)
-
-### 8. Datadog High-Risk Event Explorer
-
-![Datadog high risk events](screenshots/08-datadog-high-risk.png)
-
-### 9. Datadog Kafka Consumer Monitoring
-
-![Datadog Kafka consumer monitoring](screenshots/09-kafka-monitoring.png)
-
-### 10. Datadog Dashboard
-
-![Datadog dashboard](screenshots/10-datadog-dashboard.png)
-
-### 11. Datadog High-Value Fraud Monitor Alert
-
-![Datadog monitor alert](screenshots/11-datadog-monitor-alert.png)
+![Project evidence screenshots](screenshots/project-evidence.jpg)
 
 ## Result
 
