@@ -95,8 +95,6 @@ application:banking AND risk:high
 
 The implementation was tested across Kafka, Python consumers, fraud detection, Datadog Events, dashboard monitoring, and alerting.
 
-The individual project screenshots are stored in the `screenshots/` directory.
-
 ### Evidence covered
 | # | Evidence |
 |---:|---|
@@ -111,6 +109,8 @@ The individual project screenshots are stored in the `screenshots/` directory.
 | 09 | Kafka consumer monitoring |
 | 10 | Datadog dashboard |
 | 11 | Datadog fraud monitor configuration |
+
+Individual evidence screenshots are stored in the `screenshots/` directory.
 
 ## Project Structure
 
