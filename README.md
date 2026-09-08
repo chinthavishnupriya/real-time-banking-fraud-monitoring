@@ -95,12 +95,9 @@ application:banking AND risk:high
 
 The implementation was tested across Kafka, Python consumers, fraud detection, Datadog Events, dashboard monitoring, and alerting.
 
-<p align="center">
-  <img src="screenshots/project-evidence.jpg" alt="Real-Time Banking Fraud Monitoring System - Project Evidence" width="850">
-</p>
+The individual project screenshots are stored in the `screenshots/` directory.
 
 ### Evidence covered
-
 | # | Evidence |
 |---:|---|
 | 01 | Kafka `bank-transactions` topic — 3 partitions |
@@ -128,7 +125,6 @@ real-time-banking-fraud-monitoring/
 │   └── test_100_per_min.py
 ├── docs/
 ├── screenshots/
-│   └── project-evidence.jpg
 ├── docker-compose.yml
 ├── requirements.txt
 └── .gitignore
