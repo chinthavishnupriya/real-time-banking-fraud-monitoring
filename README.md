@@ -1,20 +1,53 @@
 # Real-Time Banking Fraud Monitoring System
 
-<p align="center">
-  <strong>Real-time transaction streaming • Fraud detection • Apache Kafka • Datadog</strong>
-</p>
+A real-time banking transaction monitoring system using Python, Apache Kafka, and Datadog.
 
 ## Overview
-A real-time banking transaction monitoring system that generates transaction events, streams them through Apache Kafka, processes them using two consumer instances, detects potentially fraudulent activity, publishes fraud alerts to a dedicated Kafka topic, and sends monitoring events to Datadog.
+
+The system generates banking transactions, streams them through Kafka, processes them using two consumer instances, detects potentially fraudulent activity, publishes fraud alerts to `fraud-alerts`, and sends monitoring events to Datadog.
+
+## Architecture
+
+```text
+Transaction Producer
+        │
+        ▼
+Kafka: bank-transactions
+      3 partitions
+        │
+   ┌────┴────┐
+   ▼         ▼
+Consumer 1  Consumer 2
+   └────┬────┘
+        ▼
+ Fraud Detection
+   ┌────┼────┐
+   ▼    ▼    ▼
+High  Rapid  Unusual
+Value  Txns  Location
+   └────┼────┘
+        ▼
+   ┌────┴─────────────┐
+   ▼                  ▼
+fraud-alerts       Datadog
+                       │
+                       ▼
+                 Dashboard
+                       │
+                       ▼
+                     Alert
+```
 
 ## Fraud Detection Rules
+
 | Rule | Detection condition | Action |
 |---|---|---|
-| 🔴 High-value | Amount > ₹50,000 | High-risk event + fraud alert |
-| 🟠 Rapid transactions | 5 transactions from the same account within 1 minute | High-risk event + fraud alert |
-| 🟡 Unusual location | Account appears from a different observed location | High-risk event + fraud alert |
+| High-value | Amount > ₹50,000 | High-risk event + fraud alert |
+| Rapid transactions | 5 transactions from the same account within 1 minute | High-risk event + fraud alert |
+| Unusual location | Account appears from a different observed location | High-risk event + fraud alert |
 
 ## Kafka Configuration
+
 | Topic | Partitions | Purpose |
 |---|---:|---|
 | `bank-transactions` | **3** | Incoming banking transactions |
@@ -23,14 +56,22 @@ A real-time banking transaction monitoring system that generates transaction eve
 Two consumer instances run in the same consumer group and share the three partitions.
 
 ## Datadog Monitoring
-Datadog is used for transaction events, high-risk fraud events, Kafka consumer lag, Kafka broker offsets, dashboard visualization, and high-value fraud alerting.
+
+- Transaction events
+- High-risk fraud events
+- Kafka consumer lag
+- Kafka broker offsets
+- Dashboard visualization
+- High-value fraud alerting
 
 **High-risk event query:**
+
 ```text
 application:banking AND risk:high
 ```
 
 ## Performance
+
 | Test | Result |
 |---|---:|
 | Transactions generated | **100** |
@@ -38,7 +79,6 @@ application:banking AND risk:high
 | Measured throughput | **99.98 transactions/minute** |
 
 ## Project Evidence
-The implementation was tested across Kafka, Python consumers, fraud detection, Datadog Events, dashboard monitoring, and alerting.
 
 | # | Evidence |
 |---:|---|
@@ -57,6 +97,7 @@ The implementation was tested across Kafka, Python consumers, fraud detection, D
 Individual evidence screenshots are stored in the `screenshots/` directory.
 
 ## Project Structure
+
 ```text
 real-time-banking-fraud-monitoring/
 ├── consumer/
@@ -74,7 +115,9 @@ real-time-banking-fraud-monitoring/
 ```
 
 ## Security
+
 Datadog API credentials are supplied through environment variables and are excluded from version control. No API key is stored in the repository.
 
 ## Outcome
+
 **Transaction generation → Kafka streaming → multi-consumer processing → fraud detection → fraud-event publishing → Datadog observability → dashboard visualization → high-risk alerting**
